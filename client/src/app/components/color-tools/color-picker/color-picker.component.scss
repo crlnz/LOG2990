@@ -1,0 +1,98 @@
+.color-picker {
+    text-align: center;
+    
+    .summary-info {
+        display: flex;
+    }
+    
+    #canvas {
+        padding-top: 30px;
+    }
+
+    .opened {
+        background: #fff;
+        max-width: 300px;
+        padding: 20px;
+        border-radius: 20px;
+       
+        .colors {
+            display: flex;
+            flex-wrap: wrap;
+  
+            .circle {
+                border: 1px solid black;
+                margin:10px;
+                height: 30px;
+                width: 30px;
+                padding: 5px;
+                border-radius: 100%;
+
+            }
+        }
+        
+        .inputs {
+            text-align: center;
+            
+            .transparence {
+                border: 1px solid #000000;
+                margin: 5px;
+                p {
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                    text-align: center;
+                    font-size: 15px;
+                    letter-spacing: 1.5px;
+                }
+                
+                input {
+                    border: 1.5px solid #727577;
+                    text-transform: uppercase;
+                    text-align: center;                
+                    letter-spacing: 1.5px;
+                    color: #595b65; 
+                    padding: 3px;
+                    margin-bottom: 10px;
+                }
+
+                button {
+                    margin-left: 10px;
+                }
+                
+                button:hover{
+                    border: 1px solid black;
+                }
+            }
+            .hex-code {
+                border: 1px solid #000000;
+                margin: 5px;
+                p {
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                    text-align: center;
+                    font-size: 15px;
+                    letter-spacing: 1.5px;
+                    line-height: 20px;
+                }
+                
+                input {
+                    border: 1.5px solid #727577;
+                    text-transform: uppercase;
+                    text-align: center;                
+                    letter-spacing: 1.5px;
+                    color: #595b65; 
+                    width: 50%;
+                    margin-bottom: 10px;
+
+                } 
+
+                button {
+                    margin-left: 10px;
+                }
+                
+                button:hover{
+                    border: 1px solid black;
+                }
+            }
+        }
+    }
+}

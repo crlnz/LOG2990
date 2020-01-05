@@ -1,0 +1,23 @@
+<div style="text-align:center;">
+  <mat-label><h6>Couleur:</h6> </mat-label>
+  
+  <button id='dialog' mat-button (click)="openPrimaryColor()" [ngStyle]="{'background-color': fillColor}">
+    <span id='name'>Primaire</span>
+  </button>
+  <button id='dialog' mat-button class="invert" (click)="swapColors()"> 
+    <i class="fas fa-retweet fa-sm"></i>
+  </button>
+  <button id='dialog' mat-button (click)="openSecondaryColor()" [ngStyle]="{'background-color': outlineColor}">
+    <span id='name'>Secondaire</span>
+  </button>
+  <button id='dialog' mat-button (click)="openBackgroundColor()" [ngStyle]="{'background-color': backgroundColor}">
+    <span id='name'>De Fond</span>
+  </button>
+  <button id="pipette" mat-button class="pipette" (click)="pipette()" [ngStyle]="{'background-color': backgroundColorPipette}"> 
+    <span id="nom" id='name'> Pipette: {{statePipette}}</span>
+    <span id="icon" id='name' class="fas fa-eye-dropper"></span>
+  </button>
+</div>
+
+
+    

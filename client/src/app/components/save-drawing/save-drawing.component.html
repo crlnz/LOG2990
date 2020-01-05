@@ -1,0 +1,46 @@
+<div class='icon' (click)="openDialog(content)">
+    <span title="Sauvegarder le dessin"><i class='fas fa-save'></i></span>
+</div>
+    
+<ng-template #content let-modal id=modal>
+    <h4>Sauvegarder un dessin</h4>
+
+    <div *ngIf="this.saved" style="font-style:italic; color: black"> Le dessin a été enregistré </div>
+
+    <div *ngIf="this.saveError" style="font-style:italic; color: red"> Le dessin n'a pas pu être enregistré </div>
+    <div >
+        <form [formGroup]="drawingInfo" (ngSubmit)="onSubmit()">
+            <div *ngIf="!this.saveError && !this.saved">
+                <div>
+                    <input formControlName="name" placeholder="Nom du Dessin" type="text">
+                </div>
+                <div formArrayName="tag" *ngFor="let item of drawingInfo.get('tag').controls; let i = index; last as isLast">
+                    <div [formGroupName]="i"  class="d-flex">
+                        <input formControlName="tag" placeholder="Étiquette" type="text">
+                        <div *ngIf="isLast" id="tagButtons">
+                            <button id="addTag"  (click)="addTag()">+</button>
+                            <button id="removeTag" [disabled]="drawingInfo.controls.tag.controls.length <=1"
+                            *ngIf="drawingInfo.controls.tag.controls.length > 1" (click)="removeTag(i)">-</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!drawingInfo.valid" style="font-style:italic; color:red">Veuillez remplir tous les champs.</div>
+                <div class="button">
+                </div>
+                <label id=checkboxContainer>
+                    <mat-checkbox color="primary" (change)="updateLocalSave()">Sauvegarde locale</mat-checkbox>
+                </label>
+            </div>
+            <div id =bottomButtons>
+                <button id="close" mat-raised-button (click)="cancel()" [mat-dialog-close]="true">Fermer</button>
+                <div *ngIf="!this.saveError && !this.saved">
+                    <button mat-raised-button *ngIf="!isLocalSave || !this.drawingInfo.valid || !drawingCreated "
+                        type="submit" [disabled]="!drawingInfo.valid || !drawingCreated || this.saveInProgress"> Sauvegarder </button>
+                    <a mat-raised-button (click)="onSubmit()" *ngIf="isLocalSave && this.drawingInfo.valid && drawingCreated" [href]="jsonUri"
+                        [download]="this.drawingInfo.value.name +'.JSON'">Sauvegarder</a>
+                </div>
+            </div>    
+        </form>
+    </div>
+</ng-template>

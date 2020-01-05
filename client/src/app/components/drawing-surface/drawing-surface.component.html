@@ -1,0 +1,91 @@
+<div [hidden]="!properties.drawingCreated" >
+    <app-grid *ngIf = "properties.showGrid"
+        [style.width.px] = "properties.width"
+        [style.height.px] = "properties.height"
+        [ngStyle]="{'background-size': properties.gridSquareSize +'px'+' '+ properties.gridSquareSize+'px'}"  
+        [style.opacity]= "properties.gridTransparency">
+    </app-grid>
+    
+    <svg [hidden] ="properties.toolImplemented"
+        [style.background-color] = "properties.color"
+        [style.width.px] = "properties.width"
+        [style.height.px] = "properties.height"
+        (mousedown)="mouseDown($event)"
+        (mousemove)="mouseMove($event)"
+        (click)="mouseClick($event)"
+        (dblclick)="doubleClick($event)" #anchorSVJ>
+        
+        <defs id ='defs'>
+            <filter id="Filter1">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+            </filter>
+        
+            <filter id="Filter2">
+                <feTurbulence result="turbulence" baseFrequency="0.08"
+                numOctaves="1" seed="1" />
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="4" />
+            </filter>
+
+            <filter id="Filter3">
+                <feTurbulence result="outlineNoise" baseFrequency="0.9"
+                numOctaves="1" seed="1" type="fractalNoise" />
+                <feDisplacementMap in="SourceGraphic" in2="outlineNoise" result="outline" scale="10" />
+                <feTurbulence type="fractalNoise" baseFrequency='0.7' result='textureNoise' numOctaves="5" />
+                <feColorMatrix type="matrix" values=
+                "0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 -0.9 1.2"
+                in="textureNoise" result="texture" />
+                <feComposite in="outline" in2="texture" operator="in"/>
+            </filter>
+
+            <filter id="Filter4">
+                <feTurbulence result="outlineNoise" baseFrequency="0.2"
+                numOctaves="1" seed="1" type="turbulence" />
+                <feDisplacementMap in="SourceGraphic" in2="outlineNoise" result="outline" scale="10" />
+                <feGaussianBlur in="outline" result="outline2" stdDeviation="1" />
+                <feTurbulence type="turbulence" baseFrequency='0.15' result='textureTurb' numOctaves="2" />
+                <feColorMatrix type="matrix" values=
+                "0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 -0.9 1.1"
+                in="textureTurb" result="texture" />
+                <feComposite in="outline2" in2="texture" operator="in"/>
+            </filter>
+
+            <filter id="Filter5">
+                <feTurbulence result="noiseOutline" baseFrequency="0.5"
+                numOctaves="1" seed="1" type="turbulence" />
+                <feDisplacementMap in="SourceGraphic" in2="noiseOutline" result="outline1" scale="5" />
+                <feGaussianBlur in="outline1" result="outline2" stdDeviation="1" />
+                <feTurbulence type="fractalNoise" baseFrequency='0.18' result='noiseTexture' numOctaves="2" />
+                <feColorMatrix type="matrix" values=
+                "0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 0 0,
+                0 0 0 -0.9 1.25"
+                in="noiseTexture" result="texture1" />
+                <feComposite in="outline2" in2="texture1" result="layer1" operator="in"/>
+                
+                <feTurbulence result="turb2" baseFrequency="0.1"
+                numOctaves="1" seed="1" type="turbulence" />
+                <feDisplacementMap in="SourceGraphic" in2="turb2" result="layer2" scale="5" />
+                
+                <feComposite in="layer1" in2="layer2" operator="in"/>
+            </filter> 
+
+        <filter id="filterEraser" filterUnits="userSpaceOnUse" x="0px" y="0px" width="100%" height="100%">
+            <!--taken from https://tympanus.net/codrops/2019/01/22/svg-filter-effects-outline-text-with-femorphology/-->
+            <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="4"></feMorphology>
+            <feFlood flood-color="#FF0000" flood-opacity="1" result="RED"></feFlood>
+            <feComposite in="RED" in2="DILATED" operator="in" result="OUTLINE"></feComposite>
+            <feMerge>
+                <feMergeNode in="OUTLINE"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        </defs>             
+    </svg>
+</div>

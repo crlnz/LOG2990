@@ -1,0 +1,18 @@
+<div *ngIf = "icon" >
+  <app-color-selector  *ngIf ="icon.name !== 'select'"></app-color-selector>
+
+  <app-attributes-select *ngIf ="icon.name === 'select'"></app-attributes-select>
+  <app-attributes-shapes *ngIf ="icon.name === 'shapes'"></app-attributes-shapes>
+  <app-attributes-paint-bucket *ngIf ="icon.name === 'paintBucket'"></app-attributes-paint-bucket>
+
+  <app-attributes-drawing-tool *ngIf = "icon.name === 'drawingTools'"></app-attributes-drawing-tool>
+  <app-attributes-stamp *ngIf="icon.name === 'stamp'"></app-attributes-stamp>
+  <app-attributes-eraser *ngIf="icon.name === 'eraser'"></app-attributes-eraser>
+  <app-attributes-text *ngIf="icon.name === 'text'"></app-attributes-text>
+  <div *ngIf="icon.name === 'fill'" class='scrollable'>
+    <mat-label>
+        <div style="text-align:center;"><h6>Applicateur de couleur</h6></div>
+    </mat-label>
+  </div>
+  <app-grid-options></app-grid-options>
+</div>

@@ -1,0 +1,11 @@
+<app-modal-window></app-modal-window>
+
+<div class = "appContainer" [class.showPanel]= "showAttributesPanel">
+  
+  <app-toolbar (attributesPanelToggled)="toggleAttributesPanel()"></app-toolbar>
+  
+  <div #workZone id = "workZone"  (resized)="getDimensions($event)" (scroll) = "scroll($event)" >  
+    <app-drawing-surface ></app-drawing-surface>
+  </div>  
+
+</div>

@@ -1,0 +1,45 @@
+.selected, .selected >i  {
+  background-color: rgb(162, 214, 236);
+  color: white;
+}
+
+.icon:hover{
+  background-color: rgb(162, 214, 236);
+}
+
+/* .noHover{
+  color: rgb(66, 0, 41);
+} */
+
+#lateralBarContainer{
+  display:grid;
+  grid-template-rows: auto 225px;
+  border-right: 1px solid black;
+}
+
+i{
+  color: black;
+  font-size:25px;
+  padding:5px;
+  padding-top: 5px;
+  margin:5px;
+}
+
+.noHover{
+  color: #FFF1;
+}
+
+.icon{
+  text-align: center;
+}
+
+.noHover{
+  text-align: center;
+}
+app-grid-options{
+  margin-top: 5px;
+}
+
+#attributesPanel{
+  background-color:#c5c2e9
+}

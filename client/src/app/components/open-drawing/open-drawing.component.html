@@ -1,0 +1,84 @@
+<div class="icon" (click)="openModal(content)">
+        <span title="Ouvrir le dessin"><i class="fas fa-folder"></i></span>
+</div>
+
+<ng-template #content let-modal id=modal >
+        <div for="tag" *ngIf='!this.localTabSelected'>
+                <mat-form-field class="example-full-tag">
+                        <mat-label>Rechercher:</mat-label>
+                        <input placeholder="Entrer un tag" matInput [(ngModel)]="tag" id="tag" type="string"
+                                (input)="sendTag()">
+                </mat-form-field>
+        </div>
+        <div mat-dialog-content>
+                <h3 mat-subheader>Dessins</h3>
+                <mat-tab-group animationDuration="0ms" (selectedTabChange)="tabChanged($event)">
+                        <mat-tab label="Serveur">
+                                <div *ngIf="!this.loading">
+                                        <div *ngIf="this.openError" style="font-style:italic; color: red">
+                                                Impossible de récupérer les dessins enregistrés! 
+                                        </div>
+                                </div>
+                                <div *ngIf="this.loading">
+                                        <img src='../../../../assets/loading.gif' height="200px" length="200px" />
+                                </div>
+
+                                <div *ngIf = !this.loading>
+                                        <div *ngIf="!this.openError">
+                                                <div *ngFor="let drawing of displayedDrawings">
+                                                        <h4 mat-line>{{drawing._id}}</h4>
+                                                        <p mat-line color> {{drawing.tags}}</p>
+                                                        <svg [style.backgroundColor]="drawing.drawingColor"
+                                                                style="border:1px solid black" viewBox="0 0 1000 1000"
+                                                                [innerHTML]="drawing.svgList |sanitizeHtml">
+                                                        </svg>
+                                                        <button *ngIf="!this.openWarning" id=openButton mat-button
+                                                                (click)="openServerDrawing(drawing._id)">Ouvrir
+                                                        </button>
+                                                        <button *ngIf="!this.openWarning" id=openButton mat-button
+                                                                (click)="deleteServerDrawing(drawing)">Supprimer
+                                                        </button>
+                                                </div>
+                                        </div>
+                                </div>
+                        </mat-tab>
+                        <mat-tab label="Local">
+                                <input type="file" name="fieldName" accept=".JSON" value =''
+                                #fileInput (click) = "resetFile()" (change)="readFile($event.target.files)">
+                                <div *ngIf="localDrawingLoaded && !localFileIsInvalid">
+                                        <h4 mat-line>{{localDrawing._id}}</h4>
+                                        <p mat-line color> {{localDrawing.tags}}</p>
+                                        <svg [style.backgroundColor]="localDrawing.drawingColor"
+                                                style="border:1px solid black" viewBox="0 0 1000 1000"
+                                                [innerHTML]="localDrawing.svgList |sanitizeHtml">
+                                        </svg>
+                                        <button *ngIf="!this.openWarning" id=openButton mat-button
+                                                (click)="openLocalDrawing()">Ouvrir
+                                        </button>
+                                </div>
+                                <div *ngIf="localFileIsInvalid" style="font-style:italic; color:red">Le fichier
+                                        n'est pas valide. Veuillez choisir un autre.</div>
+
+                        </mat-tab>
+                </mat-tab-group>
+                <div *ngIf="noMatchTag" style="font-style:italic; color:red">Il n'y a aucun dessin
+                        avec cette étiquette.</div>
+
+
+        </div>
+
+        <div *ngIf="this.openWarning" style="font-style:italic; color: red"> Le dessin choisit est {{fileName}}!
+                Par contre, vous avez déjà un dessin ouvert. En soumettant, vous perderez ce que vous avez créé
+                jusqu'à maintenant. </div>
+        <button *ngIf="this.openWarning" id=openButton mat-button (click)="confirmOpen()">Oui</button>
+        <button *ngIf="this.openWarning" id=openButton mat-button (click)="cancelOpen()"
+                [mat-dialog-close]="true">Non</button>
+        <mat-dialog-actions align="end">
+                <button *ngIf="!this.openWarning && !this.deleteWarning" mat-button (click)="cancelOpen()"
+                        [mat-dialog-close]="true">Fermer</button>
+        </mat-dialog-actions>
+        <div *ngIf="this.deleteWarning" style="font-style:italic; color: red"> Êtes-vous sûr de vouloir supprimer? </div>
+        <button *ngIf="this.deleteWarning" id=openButton mat-button (click)="confirmDelete()">Oui</button>
+        <button *ngIf="this.deleteWarning" id=openButton mat-button (click)="cancelDelete()">Non</button>
+        
+</ng-template>

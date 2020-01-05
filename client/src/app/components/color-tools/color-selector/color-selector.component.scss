@@ -1,0 +1,31 @@
+#name{
+    mix-blend-mode: exclusion;
+    color: white;
+}
+mat-label{
+    font-weight: bold;
+}
+.invert:hover{
+    background: gray;
+}
+
+.invert{
+    text-align: center;
+}
+
+.other-option{
+    text-align: center;
+    margin-bottom: 5px;
+}
+#dialog{
+    width: 50%;
+    margin: 3px;
+}
+
+#pipette{
+    width: 65%;
+    margin: 3px;
+}
+#nom{
+    float: left;
+}

@@ -1,0 +1,84 @@
+<div id=select>
+
+        <mat-label>
+                <div style="text-align:center;"><h6>Sélection:</h6></div>
+        </mat-label>
+        <div for="selectAll" style="text-align:center;">
+                <button mat-button (click)='selectAll()' id="selectAllButton"> Tous
+                        <img with="15" height="20" id='ctrl'
+                                src="../../../../assets/a-uppercase-letter-virtual-keyboard-512.png">
+                        <img with="15" height="20" id='ctrl' src="../../../../assets/control-ctrl-512.png"></button>
+        </div>
+        <div style="text-align:center;">
+                <div for="copy">
+                        <button mat-button [disabled]="!this.stateBox" (click)='copy()' id="copyButton"
+                                style="font-size: 1.0em"> Copier
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/c-copy-letter-copyright-rounded-border-square-border-512.png">
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/control-ctrl-512.png"></button>
+                </div>
+                <div for="paste">
+                        <button mat-button [disabled]="!this.clipboardFull" (click)='paste()' id="pasteButton"
+                                style="font-size: 1.0em"> Coller
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/letter-v-key-keyboard-512.png">
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/control-ctrl-512.png"></button>
+                </div>
+                <div for="cut">
+                        <button mat-button [disabled]="!this.stateBox" (click)='cut()' id="cutButton"
+                                style="font-size: 1.0em"> Couper
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/letter-x-key-keyboard-512.png">
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/control-ctrl-512.png"></button>
+                </div>
+                <div for="duplicate">
+                        <button mat-button [disabled]="!this.stateBox" (click)='duplicate()' id="duplicateButton"
+                                style="font-size: 1.0em"> Dupliquer
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/letter-d-key-keyboard-512.png">
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/control-ctrl-512.png"></button>
+                </div>
+                <div for="delete">
+                        <button mat-button [disabled]="!this.stateBox" (click)='delete()' id="deleteButton"
+                                style="font-size: 1.0em"> Supprimer
+                                <img with="15" height="20" id='ctrl'
+                                        src="../../../../assets/ic_arrow_back_48px-512.png"></button>
+                </div>
+                <div>
+                        <mat-label><h6>Rotation:</h6></mat-label>
+                        <mat-button-toggle-group [disabled]="!this.stateBox" appearance="legacy" id="rotateButton" aria-label="Font Style" (change)="setRotation($event.value)">
+                                        <mat-button-toggle value="box">Boîte</mat-button-toggle>
+                                        <mat-button-toggle value="element">Élement</mat-button-toggle>
+                                      </mat-button-toggle-group>
+                        <mat-slider [disabled]="!this.rotationChoosen" [min]="0" [max]="720" tickInterval="1" step="15" [value]="angle" (input)="rotate($event.value)" ></mat-slider></div>
+                <p *ngIf='!this.stateBox&&!this.copied' style="color: red">Veuillez sélectionner un object.</p>
+        </div>
+        <mat-label style="text-align:center;"><h6 >Magnétisation:</h6> <button mat-button (click)='toggleMagnetism()' id="toggleButton">
+                        {{buttonText}} </button></mat-label>
+        <div>
+                <mat-form-field>
+                        <mat-label>Point:</mat-label>
+                        <mat-select [(value)]="magneticPoint" (selectionChange)="setMagnetism()">
+                                <mat-option value="center">Milieu</mat-option>
+                                <mat-option value="topRight">Haut à Droite</mat-option>
+                                <mat-option value="topLeft">Haut à Gauche</mat-option>
+                                <mat-option value="topMid">Haut au Centre</mat-option>
+                                <mat-option value="bottomRight">Bas à Droite</mat-option>
+                                <mat-option value="bottomLeft">Bas à Gauche</mat-option>
+                                <mat-option value="bottomMid">Bas au Centre</mat-option>
+                                <mat-option value="midRight">Centre à Droite</mat-option>
+                                <mat-option value="midLeft">Centre à Gauche</mat-option>
+                        </mat-select>
+                </mat-form-field>
+
+        </div>
+
+
+
+
+
+</div>

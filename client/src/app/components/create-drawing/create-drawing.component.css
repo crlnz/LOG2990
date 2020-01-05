@@ -1,0 +1,56 @@
+form{
+    margin:5px;
+    
+}
+.container{
+    float: center; 
+}
+
+#name{
+    mix-blend-mode: exclusion;
+    color: white;
+}
+#colorBox{
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    margin-bottom: 1.5px;
+}
+i {
+    font-size:25px;
+    padding:5px;
+    padding-top: 5px;
+    margin:5px; 
+}
+
+label{
+    display:block;
+    text-align: center;
+}
+mat-label{
+    display:block;
+}
+
+.inputField{
+    text-align: center;
+}
+button{
+    margin-bottom: 10px;
+    margin-right: 2px;
+}
+.colorTool{
+    margin-top: 10px;
+}
+.icon:hover{
+    background-color: rgb(162, 214, 236);
+}
+
+.icon:active  {
+    background-color: rgb(162, 214, 236);
+    color: white;
+}
+.center {
+    margin: 1.5px;
+}
+

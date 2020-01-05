@@ -1,0 +1,42 @@
+button{
+    width: 90%;
+}
+mat-label{
+    font-weight: bold;
+}
+.scrollable {
+    height: 350px;
+    overflow-y: scroll;
+  }
+  #select{
+    font-size: 85%;
+  
+  }
+  #selectAllButton{
+    text-align:left;
+    font-size: 1.0em;
+  }
+
+  #ctrl{
+    float: right;
+    vertical-align: middle;
+  }
+
+  #copyButton{
+    text-align: left;
+  }
+  #pasteButton{
+    text-align: left;
+  }
+  #cutButton{
+    text-align: left;
+  }
+  #duplicateButton{
+    text-align: left;
+  }
+  #deleteButton{
+    text-align: left;
+  }
+  #rotateButton{
+    background-color:#c5c2e9
+  }

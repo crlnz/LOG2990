@@ -1,0 +1,36 @@
+
+.example-full-width {
+    width: 35%;
+}
+.scrollable {
+    height: 230px;
+    overflow-y: auto;
+}
+p {
+    color: red;
+    font-style: italic;
+}
+#textTool{
+    font-size: 85%;
+}
+
+#arial{
+    font-family: 'Arial';
+    font-size: 1.15em;
+}
+#times{
+    font-family: 'Times New Roman';
+    font-size: 1.15em;
+}
+#sans-serif{
+    font-family: 'Sans-Serif';
+    font-size: 1.15em;
+}
+#courier{
+    font-family: 'Courier';
+    font-size: 1.15em;
+}
+#cursive{
+    font-family: 'Cursive';
+    font-size: 1.15em;
+}

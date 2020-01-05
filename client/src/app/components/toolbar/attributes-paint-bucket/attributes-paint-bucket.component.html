@@ -1,0 +1,21 @@
+<div id=paintBucket class='scrollable'>
+    <mat-label>
+        <div style="text-align:center;"><h6>Sceau de peinture:</h6></div>
+    </mat-label>
+    <mat-label>Tolérance de couleur:
+        <mat-slider [min]="0" [max]="100" tickInterval="5" [(value)]="tolerance" [ngClass]="sendTolerance()" [thumbLabel]="tolerance"></mat-slider>
+    </mat-label>
+    <br>
+    <mat-label>Épaisseur du contour: 
+        <mat-slider [min]="1" [max]="25" tickInterval="5" [(value)]="strokeWidth" [ngClass]="sendStrokeWidth()" [thumbLabel]="strokeWidth"></mat-slider>
+    </mat-label>
+
+    <mat-form-field>
+        <mat-label>Type de tracé:</mat-label>
+        <mat-select [(value)] ="selectedType" [ngClass] ="sendType()">
+            <mat-option value="Fill"><mat-icon class="fas fa-square"style="font-size: 1.5em" ></mat-icon>Plein</mat-option>
+            <mat-option value="Outline"><mat-icon class="far fa-square"style="font-size: 1.5em" ></mat-icon>Contour</mat-option>
+            <mat-option value="FillOutline"><mat-icon class="fas fa-square" style="font-size: 1.5em" ></mat-icon><mat-icon class="fas fa-plus"style="font-size: 1em; margin-left: -15px;"></mat-icon><mat-icon class="far fa-square"style="font-size: 1.5em; margin-left: -20px" ></mat-icon> Plein et contour</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

@@ -1,0 +1,18 @@
+
+.example-full-width {
+    width: 40%;
+}
+button{
+    width: 1%;
+}
+p{
+    color: red;
+    font-style: italic;
+}
+#shapes{
+    font-size: 85%;
+}
+.scrollable {
+    height: 225px;
+    overflow-y: auto;
+}

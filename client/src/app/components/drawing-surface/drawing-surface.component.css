@@ -1,0 +1,15 @@
+app-grid{
+    display:block;
+    background-color: transparent;
+    display: grid;
+   
+    background-image:
+      linear-gradient(to right, grey 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, grey 0.5px, transparent 0.5px);
+pointer-events: none;
+position: absolute;
+}
+
+svg{
+  border: 5px solid black;
+}

@@ -1,0 +1,38 @@
+<mat-label>
+    <div style="text-align:center;"><h6>Texte:</h6></div>
+</mat-label>
+<div id='textTool' class='scrollable'>
+    
+    <mat-form-field>
+        <mat-label>Police:</mat-label>
+        <mat-select [(value)] ="selectedFont" (selectionChange) ="sendFont()">
+            <mat-option id= 'arial' value="arial" >Arial</mat-option>
+            <mat-option id='times' value="times">Times</mat-option>
+            <mat-option id='sans-serif' value="sans-serif">Sans-Serif</mat-option>
+            <mat-option id='courier' value="courier">Courier</mat-option>
+            <mat-option id='cursive' value="cursive">Cursive</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-label>Taille de la police:</mat-label>
+        <mat-slider [min]="1" [max]="50" step="1" tickInterval="5" [(value)]="textSize" [ngClass]="sendTextSize()" [thumbLabel]="textSize"></mat-slider>
+    </div>
+    
+    <mat-label>Mutateur:</mat-label>
+    <mat-button-toggle value="bold" (click)="toggleBold()" > 
+        <i class="fas fa-bold"></i>
+    </mat-button-toggle>
+    <mat-button-toggle value="italic" (click)="toggleItalic()" > 
+        <i class="fas fa-italic"></i>
+    </mat-button-toggle>
+
+    <mat-form-field>
+        <mat-label>Alignement:</mat-label>
+        <mat-select [(value)] ="selectedAlign" (selectionChange) ="sendAlign()">
+            <mat-option value="start"><mat-icon class="fas fa-align-left"style="font-size: 1.5em" ></mat-icon>Gauche</mat-option>
+            <mat-option value="middle"><mat-icon class="fas fa-align-center"style="font-size: 1.5em" ></mat-icon>Centre</mat-option>
+            <mat-option value="end"><mat-icon class="fas fa-align-right"style="font-size: 1.5em" ></mat-icon>Droite</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

@@ -1,0 +1,71 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<ng-template #content let-modal id=modal >
+  
+  <div class="modal-header" >
+    <h4 class="modal-title" id="modal-basic-title" style="margin: 0 auto;" >Nouveau Dessin</h4>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="drawingForm" (ngSubmit)="onSubmit()" >
+      <div class="colorMethod" style="text-align: center">
+        <input name="color" type="radio" (click)="toggleRgba()" [disabled]="!showRgba" checked> Outils de couleur
+        <input name="color" type="radio" (click)="toggleRgba()" [disabled]="showRgba"> RGBA
+
+
+        <div class="colorTool" *ngIf="!showRgba" style="text-align: center">
+            <button mat-button style="border: 1px solid #000000;" type = "button" (click)="openColorPicker()" [ngStyle]="{'background-color': color}">
+              <span id="name">Palette de couleur</span>
+            </button>
+        </div>
+      </div>
+
+      <div class="rgba" *ngIf="showRgba" style="text-align: center">
+        <mat-label for="red">R:
+            <mat-slider [min]="0" [max]="255" step="1" formControlName="red" [thumbLabel]="this.drawingForm.value.red"></mat-slider>
+        </mat-label>
+       
+        <mat-label for="green">G:
+            <mat-slider [min]="0" [max]="255" step="1" formControlName="green" [thumbLabel]="this.drawingForm.value.green"></mat-slider>
+        </mat-label>
+        <mat-label for="blue">B:
+            <mat-slider [min]="0" [max]="255" step="1" formControlName="blue" [thumbLabel]="this.drawingForm.value.blue"></mat-slider>
+        </mat-label>
+      
+        <mat-label for="alpha">A:
+            <mat-slider [min]="0" [max]="1" tickInterval="0.1" step="0.05" formControlName="alpha" [thumbLabel]="this.drawingForm.value.alpha"></mat-slider>
+        </mat-label>
+        
+        <div class='container'>
+          <div id="colorBox" [style.background-color] ="rgbaColor"> <span id="name">Couleur</span></div>
+        </div>
+      </div>
+
+      <div class="center">
+      <label for="width" >Largeur:
+        <br>
+        <input class="inputField" type="number" min="1" id="width" placeholder="Entrez une valeur positive" formControlName="width">
+      </label>
+
+      <label for="height" >Hauteur:
+        <br>
+        <input class="inputField" type="number" min="1" id="Height" placeholder="Entrez une valeur positive" formControlName="height" >
+      </label>
+    </div>
+      
+      <div *ngIf="!drawingForm.valid" style="font-style:italic; color:red; white-space:pre-wrap; width:30ex">Assurer que tous les champs sont remplis et que la largeur et hauteur sont comprises entre 20 et 5000.</div>
+      <div *ngIf="this.createWarning" style="font-style:italic; color: red; white-space:pre-wrap; width:30ex">Vous avez déjà un dessin ouvert!! <br>En soumettant, vous perderez ce que vous avez créé jusqu'à maintenant.</div>
+    </form>
+  
+  </div>
+
+      <button style= "float:right" type="button" (click)=cancel() style="float:right" mat-raised-button>Annuler</button>
+      <button style="float:right" type="button" (click)="onSubmit()" mat-raised-button [disabled]="!drawingForm.valid">Soumettre</button>
+
+</ng-template>
+
+<div (click)="openDialog(content)" class ="icon">
+  <span title="Nouveau dessin"><i class="fas fa-plus"></i></span>
+</div>

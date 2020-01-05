@@ -1,0 +1,7 @@
+<div id=eraser class='scrollable'>
+    <mat-label>
+        <div style="text-align:center;"><h6>Efface:</h6></div>
+    </mat-label>
+    <label for="gridTransparency">Grosseur de l'efface:</label>
+    <mat-slider [min]="10" [max]="500" tickInterval="5" [(value)]="eraserSize" [ngClass]="updateSize()" [thumbLabel]="eraserSize"></mat-slider>
+</div>

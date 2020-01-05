@@ -1,0 +1,15 @@
+<div id=grid>
+    <mat-label>
+        <div style="text-align:center;"><h6>Option Grille:</h6></div>
+    </mat-label>
+    <div style="text-align:center;">
+    <button mat-button (click)='toggleGrid()' id="toggleButton"> {{buttonText}} </button>
+  </div>
+  <div *ngIf="afficherGrille">
+    <mat-label>Taille carrées:</mat-label>
+    <mat-slider [min]="10" [max]="200" tickInterval="10" step="1" [value]="gridSquareSize" (input)="updateSquareSize($event.value)" [thumbLabel]="gridSquareSize"></mat-slider>
+    <br>
+    <mat-label>Opacité de la grille:</mat-label>
+    <mat-slider [min]="1" [max]="10" tickInterval="1" step="1" [value]="gridTransparency" (input)="updateTransparency($event.value)" [thumbLabel]="gridTransparency"></mat-slider>
+  </div>
+</div>

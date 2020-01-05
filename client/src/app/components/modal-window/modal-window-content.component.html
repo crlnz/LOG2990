@@ -1,0 +1,13 @@
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<h2 mat-dialog-title > Bienvenue sur PolyDessin! </h2>
+
+<div mat-dialog-content>
+    <p> Cette application Web pour permettra de créer vos propres dessins. </p>
+    <p> Pour commencer un nouveau dessin, recherchez l'icône <i class="fas fa-plus"></i> dans la barre d'outils. Pour plus d'informations concernant l'utilisation de cette application, recherchez l'icône <i class="fas fa-question"></i> </p>
+
+    <input type="checkbox" (change)="toggleVisibility()"> Cochez la case si vous ne voulez plus voir ce message.
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveData()" [mat-dialog-close]="true" cdkFocusInitial> Fermer </button>
+</mat-dialog-actions>

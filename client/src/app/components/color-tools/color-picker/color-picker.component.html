@@ -1,0 +1,35 @@
+<div class="color-picker">
+
+    <div  class="opened">
+      <div class="colors">
+        <div class=circle (click)="updateColorPalette(color)"
+          *ngFor="let color of lastTen " max [ngStyle]="{'background': color}">
+        </div>
+      </div>
+
+      <app-color-palette (outputColor)="updateColorPalette($event)"></app-color-palette>
+
+      <div class="inputs">
+        <div class="transparence">
+          <p>Transparence</p>
+          <input type="number" min="0" max="100" placeholder="{{transparency}}" #transInput>
+          <button mat-raised-button (click)="setTransparency(transInput.value)" (click)="updateColorPalette(color)">OK</button>
+          <div *ngIf="this.transparencyError" style="font-style:italic; color:red">SVP entrez un pourcentage de transparence valide entre 0 et 100</div>
+        </div>
+
+        <div class="hex-code">
+          <p>Code hexadécimal</p>
+          <div>
+            <input type="text" maxlength="7" [value]="color" #paintInput />
+            <button mat-raised-button (click)="colorManual(paintInput.value)" >OK</button>
+            <div *ngIf="this.hexError" style="font-style:italic; color:red">SVP entrez un code hexadécimal valide</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="togglePalette()"> OK </button>
+  </mat-dialog-actions>
+</div>

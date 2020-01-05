@@ -1,0 +1,87 @@
+<ng-template #content let-modal id=modal>
+    <h1 mat-dialog-title > Guide d'utilisateur </h1>
+
+    <div mat-dialog-content>
+        <p>Voici un petit guide d’utilisation qui vous permettra de créer votre premier dessin.</p> 
+
+        <h4>Création d’un dessin </h4>
+        <p>Pour créer un nouveau dessin, appuyer sur le symbole +. </p>
+           
+        <h4>Les outils principaux </h4> 
+        <p>Pour commencer votre nouveau dessin, il suffit de sélectionner l’outils de votre choix et de le déposer sur la surface de dessin. Les outils de traçage disponibles sont le crayon, le pinceau, la plume, le stylo et l’aérosol. Il est tout aussi permis d’effacer à tout moment des parties de votre dessins en utilisant l’outil de la gomme à effacer. </p>
+        
+        <h4>Formes</h4>
+        <p>Pour inclure des formes dans votre dessins, il vous suffit de glisser et déposer la forme de votre choix sur votre dessin. Il vous suffit, par la suite, le réajuster la taille selon votre choix. Les formes disponibles sont le rectangle, le carré, l’ellipse et le polygone. Il est tout aussi possible de modifier le tracé de la forme en choisissant si elle doit être pleine ou avec un contour. </p>
+        <p>Une liste d’étampes vous permet de rajouter des cliparts ou des emojis à votre dessin. En sélectionnant l’étampe, puis en sélectionnant sur l’endroit désiré, vous réussirez à la rajoute sur votre dessin. Par la suite, vous pourrez réajuster la taille et l’angle d’orientation. </p>
+
+        <h4>Application de couleur</h4>
+        <p>Pour inclure une couleur à vos outils, vos formes ou au fond du dessin, il vous suffit de sélectionner la couleur principale et la couleur secondaire. Pour modifier la couleur sur votre dessin, il vous suffit d’utiliser la pipette et de cliquer avec votre pointeur pour assigner la nouvelle couleur à votre dessin. Pour remplir une zone précise d’une certaine couleur, il suffit d’utiliser le sceau de peinture en sélectionnant l’objet et la couleur. </p>
+
+        <h4>Ligne</h4>
+        <p>Pour tracer une ligne d’un ou plusieurs segments, il suffit de sélectionner un endroit sur la surface de dessin, puis de sélectionner un autre endroit. Une ligne se formera par ces deux points. Les segments vont s’additionner un à la suite de l’autre dépendamment du nombre de points. Vous pouvez modifiez vos lignes en ajustant le type de jonction, l’épaisseur, le diamètre des points de jonction et le motif de ligne. </p>
+
+        <h4>Texte</h4>
+        <p>Pour inclure une zone de texte, il suffit de sélectionner l’endroit où cette zone doit être placé puis écrire. Il est possible de modifier la police du texte, la taille, la police et l’alignement.</p>
+
+        <h4>Sélection</h4>
+        <p>En sélectionnant un objet, il est possible de le manipuler; faire une rotation, couper, copier, dupliquer et supprimer. </p>
+        <p>En tout temps, il est possible de revenir en arrière et d’effacer la dernière action jusqu’à revenir au tout début. </p>
+
+        <h4>Sauvegarde</h4>
+        <p>Pour sauvegarder votre dessin, il suffit de lui définir un nom. Il sera, par la suite, possible de visionner la galerie de dessins et d’exporter les dessins sous format bmp, jpg ou png. </p>
+
+        <h4>Aide-mémoire</h4>
+        <p>Voici un aide-mémoire pour les raccourcis clavier</p>
+
+        <h5>Résultat: Touche(s)</h5>	
+        <h6>Options de fichier</h6>	
+        <p>Créer un nouveau dessin:	Ctrl-O</p>
+        <p>Sauvegarder le dessin: Ctrl-S</p>
+        <p>Voir la galerie de dessins: Ctrl-G </p>
+        <p>Exporter le dessin: Ctrl-E</p>
+	
+        <h6>Manipulations de sélection</h6>	
+        <p>Couper la sélection: Ctrl-X</p>
+        <p>Copier la sélection: Ctrl-C</p>
+        <p>Coller la sélection: Ctrl-V</p>
+        <p>Dupliquer la sélection: Ctrl-D</p>
+        <p>Supprimer la sélection: Supprimer</p>
+        <p>Tout sélectionner: Ctrl-A</p>
+        
+        <p>Annuler:	Ctrl-Z</p>
+        <p>Refaire: Ctrl-Shift-Z</p>
+	
+        <h6>Choisir un outil</h6>	
+        <p>Crayon: C</p>
+        <p>Pinceau: W</p>
+        <p>Plume: P</p>
+        <p>Stylo: Y</p>
+        <p>Aérosol: A</p>
+        <p>Rectangle: 1</p>
+        <p>Ellipse:	2</p>
+        <p>Polygone: 3</p>
+        <p>Ligne: L</p>
+        <p>Texte: T</p>
+        <p>Applicateur de couleur: R</p>
+        <p>Sceau de peinture: B</p>
+        <p>Efface: E</p>
+        <p>Pipette: I</p>
+        <p>Sélection: S</p>
+	
+        <h6>Options de zone de travail</h6>	
+        <p>Afficher / masquer la grille: G</p>
+        <p>Activer / désactiver le magnétisme: M</p>
+        <p>Augmenter la taille des carrés de la grille au prochain multiple de 5: +</p>
+        <p>Diminuer la taille des carrés de la grille au prochain multiple de 5: -</p>
+
+
+    </div>
+    
+    <mat-dialog-actions align="end">
+        <button mat-button  [mat-dialog-close]="true" cdkFocusInitial> Fermer </button>
+    </mat-dialog-actions>
+</ng-template>
+
+<div (click)="openDialog(content)" class="icon">
+    <span title="Guide d'utilisateur"><i class="fas fa-question-circle"></i></span>
+</div>

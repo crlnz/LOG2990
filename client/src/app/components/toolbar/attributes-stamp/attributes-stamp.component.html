@@ -1,0 +1,37 @@
+<mat-label>
+    <div style="text-align:center;"><h6>Étampes:</h6></div>
+</mat-label>
+<div id='stamp' class='scrollable'>
+    <mat-form-field>
+        <mat-label>Étampe:</mat-label>
+
+        <mat-select [(value)] ="selectedStamp" [ngClass] ="sendStamp()">
+            <mat-option value="null">Aucune étampe</mat-option>
+            <mat-option value="Etampe1">Étampe #1
+                <img with="20" height="40" src="../../../../assets/Stamps/Etampe1.png">
+            </mat-option>
+
+            <mat-option value="Etampe2">Étampe #2
+                <img with="20" height="40" src="../../../../assets/Stamps/Etampe2.png">
+            </mat-option>
+
+            <mat-option value="Etampe3">Étampe #3
+                <img with="20" height="40" src="../../../../assets/Stamps/Etampe3.png">
+            </mat-option>
+            
+            <mat-option value="Etampe4">Étampe #4
+                <img with="20" height="40" src="../../../../assets/Stamps/Etampe4.png">
+            </mat-option>
+            
+            <mat-option value="Etampe5">Étampe #5
+                <img with="20" height="40" src="../../../../assets/Stamps/Etampe5.png">
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-label>Rotation(°):</mat-label>
+    <mat-slider [min]="0" [max]="360" step="1" [(value)]="rotate" [ngClass]="sendRotate()" [thumbLabel]="rotate"></mat-slider>
+    <br>
+    <mat-label>Taille:</mat-label>    
+    <mat-slider [min]="0.1" [max]="10" step="0.1" [(value)]="scale" [ngClass]="sendScale()" [thumbLabel]="scale"></mat-slider>  
+</div>

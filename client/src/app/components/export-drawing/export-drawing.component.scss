@@ -1,0 +1,30 @@
+i {
+    font-size:25px;
+    padding:5px;
+    padding-top: 5px;
+    margin:5px; 
+}
+
+div{
+    padding-bottom: 2.5px;
+}
+label{
+    display:block;
+    width: 50%;
+}
+
+
+.button{
+    margin-left:2px;
+}
+.icon{
+    padding-bottom: 0px;
+}
+.icon:hover{
+    background-color: rgb(162, 214, 236);
+}
+
+.icon:active  {
+    background-color: rgb(162, 214, 236);
+    color: white;
+}

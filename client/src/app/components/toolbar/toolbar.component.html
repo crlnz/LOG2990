@@ -1,0 +1,27 @@
+<div id="lateralBarContainer">
+
+  <div id=top>
+    <div *ngFor="let icon of topIconList" (click)="onSelect(icon)" [class.selected]="icon === selectedIcon" class ="icon">
+      <span [title]="icon.hover"><i [ngClass]="icon.iconImage"></i></span>
+    </div>
+    <div [ngClass]="undoOn ? 'icon' : 'noHover'">
+    <span title="Annuler"><i [ngClass]="undoOn ? 'icon' : 'noHover'" (click)="clickUndo()" class="fa fa-undo " aria-hidden="true"></i></span>
+    </div>
+    <div [ngClass]="redoOn ? 'icon' : 'noHover'">
+      <span title="Refaire"><i [ngClass]="redoOn ? 'icon' : 'noHover'" (click)="clickRedo()" class="fa fa-redo " aria-hidden="true"></i></span>
+    </div> 
+  </div>
+
+  <div id=bottom>
+      <app-create-drawing></app-create-drawing>
+      <app-open-drawing></app-open-drawing>
+      <app-save-drawing></app-save-drawing>
+      <app-export-drawing></app-export-drawing>
+      <app-user-guide></app-user-guide> 
+  </div>
+
+</div>
+
+<div id="attributesPanel">
+  <app-attributes-panel [hidden]=!showPanel [icon]="selectedIcon"></app-attributes-panel>
+</div>

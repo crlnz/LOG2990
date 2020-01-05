@@ -1,0 +1,33 @@
+<mat-label>
+    <div style="text-align:center;"><h6>Forme:</h6></div>
+</mat-label>
+<div id=shapes class='scrollable'>
+  <mat-form-field>
+      <mat-label>Forme:</mat-label>
+      <mat-select [(value)] ="selectedShape" (selectionChange) ="sendShape()">
+          <mat-option value="Rectangle" ><mat-icon class="fas fa-square"style="font-size: 1.5em" ></mat-icon>Rectangle</mat-option>
+          <mat-option value="Ellipse"><mat-icon class="fas fa-circle" style="font-size: 1.5em"></mat-icon>Ellipse</mat-option>
+          <mat-option value="Polygon"><mat-icon class="fas fa-draw-polygon" style="font-size: 1.5em"></mat-icon>Polygone</mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <div>
+    <mat-label>Épaisseur:</mat-label>
+    <mat-slider [min]="1" [max]="50" tickInterval="5" [(value)]="width" [ngClass]="sendWidth()" [thumbLabel]="width"></mat-slider>
+  </div>
+
+  <mat-form-field>
+      <mat-label>Type de tracé:</mat-label>
+      <mat-select [(value)] ="selectedType" [ngClass] ="sendType()">
+          <mat-option value="Fill"><mat-icon class="fas fa-square"style="font-size: 1.5em" ></mat-icon>Plein</mat-option>
+          <mat-option value="Outline"><mat-icon class="far fa-square"style="font-size: 1.5em" ></mat-icon>Contour</mat-option>
+          <mat-option value="FillOutline"><mat-icon class="fas fa-square" style="font-size: 1.5em" ></mat-icon><mat-icon class="fas fa-plus"style="font-size: 1em; margin-left: -15px;"></mat-icon><mat-icon class="far fa-square"style="font-size: 1.5em; margin-left: -20px" ></mat-icon> Plein et contour</mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  
+  <div *ngIf="polygon">
+    <mat-label>Nombre de sommets:</mat-label>
+    <mat-slider [min]="3" [max]="12" step="1" tickInterval="1" [(value)]="nbOfPoints" [ngClass]="sendNbOfPoints()" [thumbLabel]="nbOfPoints"></mat-slider>
+  </div>
+</div>

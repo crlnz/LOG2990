@@ -1,0 +1,40 @@
+#grid-container{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    height: 100%;  
+     
+}
+
+.appContainer{
+    display: grid;
+    grid-template-columns: 50px auto;
+    height: 100%; 
+     
+}
+
+.showPanel{
+    display: grid;
+    grid-template-columns: 250px auto;
+    height: 100%;    
+}
+
+
+#workZone{
+    height: 100%;
+    overflow: auto;
+    background-color:rgb(67,67,67);
+}
+
+app-drawingSurface{
+    overflow: auto;
+    border: 10px solid black;
+
+}
+
+app-toolbar{
+    display: grid;
+    grid-template-columns: 50px auto;
+    background-color: #8079bb       ;
+    height: 100%;
+}
+

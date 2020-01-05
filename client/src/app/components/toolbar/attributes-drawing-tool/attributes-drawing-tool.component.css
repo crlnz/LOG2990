@@ -1,0 +1,19 @@
+
+.example-full-width {
+    width: 35%;
+}
+button{
+    width: 1%;
+}
+p{
+    color: red;
+    font-style: italic;
+}
+#drawingTool{
+    font-size: 85%;
+}
+
+.scrollable {
+    height: 225px;
+    overflow-y: auto;
+}
