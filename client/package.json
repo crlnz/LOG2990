@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "build": "ng build",
     "test": "ng test",
     "coverage": "ng test --code-coverage --sourceMap=true",
     "lint": "ng lint --type-check --format stylish",
-    "lint:fix": "ng lint --type-check --format stylish --fix"
+    "lint:fix": "ng lint --type-check --format stylish --fix",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -52,5 +54,9 @@
     "tslint": "~5.15.0",
     "tslint-microsoft-contrib": "^6.2.0",
     "typescript": "~3.4.3"
+  },
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
   }
 }
